@@ -15,6 +15,7 @@ const WeatherDisplayContainer = (props) => {
             <div className={s.status}>
                 <h1>Active Games</h1>
                 <input onChange={getCity} type="text" />
+                <button>Click</button>
             </div>
             <WeatherDisplay inpVal={inpVal} />
         </div>
