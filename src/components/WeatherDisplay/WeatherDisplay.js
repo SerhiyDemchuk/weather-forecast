@@ -4,7 +4,8 @@ const WeatherDisplay = (props) => {
 
     return (
         <div>
-            
+            <div className="tempField">{props.temperature}</div>
+            <div className="cityNameField">{props.cityName}</div>
         </div>
     )
 }

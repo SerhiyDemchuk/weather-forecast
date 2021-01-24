@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { getData } from '../../redux/reducer/weatherReducer';
+import { connect } from 'react-redux';
 import WeatherDisplay from './WeatherDisplay';
 import s from './WeatherDisplay.css';
+// import { weatherAPI } from '../../api/api';
 
 const WeatherDisplayContainer = (props) => {
 
@@ -15,11 +18,18 @@ const WeatherDisplayContainer = (props) => {
             <div className={s.status}>
                 <h1>Active Games</h1>
                 <input onChange={getCity} type="text" />
-                <button>Click</button>
+                <button onClick={() => props.getData(inpVal)}>Click</button>
             </div>
-            <WeatherDisplay inpVal={inpVal} />
+            <WeatherDisplay 
+            temperature={props.temperature} 
+            cityName={props.cityName}/>
         </div>
     )
 }
 
-export default WeatherDisplayContainer;
+const mapStateToProps = state => ({
+    temperature: state.temperature,
+    cityName: state.cityName
+})
+
+export default connect(mapStateToProps, { getData })(WeatherDisplayContainer);
