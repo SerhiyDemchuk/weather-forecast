@@ -24,15 +24,15 @@ export const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 request: true,
-                main: action.payload.main,
-                weather: action.payload.weather,
-                visibility: action.payload.visibility,
-                wind: action.payload.wind,
-                clouds: action.payload.clouds,
-                daytime: action.payload.dt,
-                sys: action.payload.sys,
-                name: action.payload.name,
-                timezone: action.payload.timezone,
+                main: action.data.main,
+                weather: action.data.weather[0],
+                visibility: action.data.visibility,
+                wind: action.data.wind,
+                clouds: action.data.clouds,
+                daytime: action.data.dt,
+                sys: action.data.sys,
+                name: action.data.name,
+                timezone: action.data.timezone,
                 hideEls: { visibility: 'visible' }
             }
         case FAILED_REQUEST:
@@ -47,14 +47,13 @@ export const weatherReducer = (state = initialState, action) => {
     }
 }
 
-const SUCCESSED_REQUEST_AC = (data) => ({ type: SUCCESSED_REQUEST, payload: data });
+const SUCCESSED_REQUEST_AC = (data) => ({ type: SUCCESSED_REQUEST, data });
 const FAILED_REQUEST_AC = () => ({ type: FAILED_REQUEST});
 
 export const getData = (cityName) => async (dispatch) => {
     try {
-        let response = await weatherAPI.getWeather(cityName)
-        dispatch(SUCCESSED_REQUEST_AC(response))
-        console.log(response);
+        let response = await weatherAPI.getWeather(cityName);
+        dispatch(SUCCESSED_REQUEST_AC(response));
     } catch (error) {
         dispatch(FAILED_REQUEST_AC());
     }

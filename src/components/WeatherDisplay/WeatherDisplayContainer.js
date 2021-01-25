@@ -12,23 +12,7 @@ const WeatherDisplayContainer = (props) => {
         setInpVal(e.target.value);
     }
 
-    if (props.request === true) {
-        console.log(props.weather);
-        console.log('------------------');
-        console.log('------------------');
-        console.log(props.main);
-        console.log('------------------');
-        console.log('------------------');
-        console.log(props.wind);
-        console.log('------------------');
-        console.log('------------------');
-        console.log(props.clouds);
-        console.log('------------------');
-        console.log('------------------');
-        console.log(props.sys);
-        console.log('------------------');
-        console.log('------------------');
-    }
+    // const {temp, feels_like, temp_min, temp_max, pressure, humidity} = props.main;
 
     return (
         <div>
@@ -43,6 +27,10 @@ const WeatherDisplayContainer = (props) => {
                 timezone={props.timezone}
                 daytime={props.daytime}
                 hideEls={props.hideEls}
+                main={props.main}
+                sys={props.sys}
+                weather={props.weather}
+                request={props.request}
             />
         </div>
     )
