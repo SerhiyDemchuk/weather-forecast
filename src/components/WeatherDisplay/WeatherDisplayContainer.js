@@ -7,7 +7,6 @@ import s from './WeatherDisplay.module.css';
 const WeatherDisplayContainer = (props) => {
 
     let [inpVal, setInpVal] = useState();
-
     const getCity = (e) => {
         setInpVal(e.target.value);
     }
