@@ -5,9 +5,11 @@ h2, p {
 }
 
 .typeInfo {
-  padding-top: 3rem;
+  height: 400px;
+  padding: 48px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .typeInfo input {
@@ -16,29 +18,48 @@ h2, p {
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.3)
   );
-  border: none;
+  border: 2px solid transparent;
+  outline: none;
   width: 50%;
-  padding: 0.5rem 0rem 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 24px;
+  padding: 8px 16px;
+  border-radius: 32px;
+  font-size: 1.5rem;
   color: #658ec6;
 }
 
+.typeInfo input:focus {
+  border: 2px solid #6ADCE2;
+}
+
+.typeInfo input:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  transition: ease .5s;
+}
+
 .typeInfo button {
-  margin-left: 1rem;
-  border-radius: 2rem;
-  width: 25%;
-  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 16px;
+  border-radius: 32px;
+  padding: 7px 25px;
+  border: 2px solid transparent;
   color: #658ec6;
   font-size: 24px;
+  transition: ease-in .4s all;
+}
+
+.typeInfo button:hover {
+  box-shadow: rgba(0, 0, 0, 0.116) 0px 10px 50px;
+  background: #6ed9df;
+  color: #fff;
 }
 
 .mainInfo {
   display: flex;
   flex-direction: column;
-  padding-left: 4rem;
+  padding-left: 85px;
 }
 
 .name {
-  padding: 1rem 0 1rem;
+  padding: 16px 0;
 }

@@ -9,7 +9,7 @@ const WeatherDisplay = ({ sys, weather, ...props }) => {
         <div style={props.hideEls}>
             <div className={s.mainInfo}>
                 <h2 className={s.name}>{props.name} {sys.country}</h2>
-            <ShowIcon weather={weather} request={props.request} />
+                <ShowIcon weather={weather} request={props.request} />
             </div>
             <ShowMain hideEls={props.hideEls} convertTemp={props.convertTemp} main={props.main} />
             <div className={s.visibility}>Visibility: {props.visibility}</div>
