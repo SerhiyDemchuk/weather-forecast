@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { getData } from '../../redux/reducer/weatherReducer';
 import { connect } from 'react-redux';
 import WeatherDisplay from './WeatherDisplay';
-import s from './WeatherDisplay.css';
+import s from './WeatherDisplay.module.css';
 
 const WeatherDisplayContainer = (props) => {
 
@@ -12,26 +12,36 @@ const WeatherDisplayContainer = (props) => {
         setInpVal(e.target.value);
     }
 
-    // const {temp, feels_like, temp_min, temp_max, pressure, humidity} = props.main;
+    let convertTemp = (obj, key) => {
+        for (let values in obj) {
+            if (values === key) {
+                return Math.round(obj[values] - 273.15)
+            }
+        }
+    }
 
     return (
         <div>
-            <div className={s.status}>
-                <h1>Active Games</h1>
+            <div className={s.typeInfo}>
                 <input onChange={getCity} type="text" />
-                <button onClick={() => props.getData(inpVal)}>Click</button>
+                <button onClick={() => props.getData(inpVal)}>Search</button>
             </div>
-            <WeatherDisplay
-                name={props.name}
-                visibility={props.visibility}
-                timezone={props.timezone}
-                daytime={props.daytime}
-                hideEls={props.hideEls}
-                main={props.main}
-                sys={props.sys}
-                weather={props.weather}
-                request={props.request}
-            />
+            { props.request
+                ? <div>
+                    <WeatherDisplay
+                        name={props.name}
+                        visibility={props.visibility}
+                        timezone={props.timezone}
+                        daytime={props.daytime}
+                        hideEls={props.hideEls}
+                        sys={props.sys}
+                        weather={props.weather}
+                        convertTemp={convertTemp}
+                        main={props.main}
+                    />
+                </div>
+                : null
+            }
         </div>
     )
 }

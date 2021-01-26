@@ -1,24 +1,21 @@
 import React from 'react';
 import ShowIcon from '../ShowIcon/ShowIcon';
+import ShowMain from '../ShowMain/ShowMain';
+import s from './WeatherDisplay.module.css';
 
-const WeatherDisplay = ({ main, sys, weather, ...props }) => {
+const WeatherDisplay = ({ sys, weather, ...props }) => {
 
     return (
         <div style={props.hideEls}>
-            <div className="main-info">
-                <div className="name">{props.name} {sys.country}</div>
+            <div className={s.mainInfo}>
+                <h2 className={s.name}>{props.name} {sys.country}</h2>
+            <ShowIcon weather={weather} request={props.request} />
             </div>
-            <div className="visibility">Visibility: {props.visibility}</div>
-            <div className="timezone">Timezone: {props.timezone}</div>
-            <div className="daytime">Daytime: {props.daytime}</div>
-            <div className="sun">{sys.sunrise} {sys.sunset}</div>
-            <div className="description">{weather.description}</div>
-            <div className="main">{weather.main}</div>
-            <ShowIcon icon={weather.icon} request={props.request} />
-            {/* {props.request 
-                ? <div className="icon">{() => props.showIcon(weather.icon)}</div>
-                : null
-            } */}
+            <ShowMain hideEls={props.hideEls} convertTemp={props.convertTemp} main={props.main} />
+            <div className={s.visibility}>Visibility: {props.visibility}</div>
+            <div className={s.timezone}>Timezone: {props.timezone}</div>
+            <div className={s.daytime}>Daytime: {props.daytime}</div>
+            <div className={s.sun}>{sys.sunrise} {sys.sunset}</div>
 
         </div>
     )
