@@ -3,6 +3,8 @@ import { getData } from '../../redux/reducer/weatherReducer';
 import { connect } from 'react-redux';
 import WeatherDisplay from './WeatherDisplay';
 import s from './WeatherDisplay.module.css';
+import ShowMain from '../ShowMain/ShowMain';
+import ShowIcon from '../ShowIcon/ShowIcon';
 
 const WeatherDisplayContainer = (props) => {
 
@@ -12,7 +14,7 @@ const WeatherDisplayContainer = (props) => {
         setInpVal(e.target.value);
     }
 
-    let convertTemp = (obj, key) => {
+    const convertTemp = (obj, key) => {
         for (let values in obj) {
             if (values === key) {
                 return Math.round(obj[values] - 273.15)
@@ -20,10 +22,22 @@ const WeatherDisplayContainer = (props) => {
         }
     }
 
+    const convertTime = (obj) => {
+        let seconds = Math.floor((obj / 1000) % 60);
+        let minutes = Math.floor((obj / (1000 * 60)) % 60);
+        let hours = Math.floor((obj / (1000 * 60 * 60)) % 24);
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        return hours + ":" + minutes + ":" + seconds;
+    }
+
     return (
-        <div>
+        <div className={s.showError}>
             <div className={s.typeInfo}>
-                <input onChange={getCity} type="text" />
+                <input placeholder="Type city..." onChange={getCity} type="text" />
                 <button onClick={() => props.getData(inpVal)}>Search</button>
             </div>
             { props.request
@@ -38,9 +52,10 @@ const WeatherDisplayContainer = (props) => {
                         weather={props.weather}
                         convertTemp={convertTemp}
                         main={props.main}
+                        convertTime={convertTime}
                     />
                 </div>
-                : null
+                : <h1>{props.main}</h1>
             }
         </div>
     )
