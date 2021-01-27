@@ -8,7 +8,7 @@ const WeatherDisplayContainer = (props) => {
 
     let [inpVal, setInpVal] = useState();
 
-    const getCity = (e) => {
+    const typeCity = (e) => {
         setInpVal(e.target.value);
     }
 
@@ -38,7 +38,7 @@ const WeatherDisplayContainer = (props) => {
     return (
         <div className={s.showError}>
             <div className={s.typeInfo}>
-                <input placeholder="Type city..." onChange={getCity} type="text" />
+                <input placeholder="Type city..." onChange={typeCity} type="text" />
                 <button onClick={() => props.getData(inpVal)}>Search</button>
             </div>
             { props.request
