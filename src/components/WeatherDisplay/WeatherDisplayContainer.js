@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getData } from '../../redux/reducer/weatherReducer';
 import { connect } from 'react-redux';
 import WeatherDisplay from './WeatherDisplay';
@@ -7,14 +7,18 @@ import s from './WeatherDisplay.module.css';
 const WeatherDisplayContainer = (props) => {
 
     let [inpVal, setInpVal] = useState();
+
     const getCity = (e) => {
         setInpVal(e.target.value);
     }
 
+    useEffect(() => {
+    }, [props.request]);
+
     const convertTemp = (obj, key) => {
         for (let values in obj) {
             if (values === key) {
-                return Math.round(obj[values] - 273.15)
+                return Math.round(obj[values] - 273.15);
             }
         }
     }
@@ -55,7 +59,7 @@ const WeatherDisplayContainer = (props) => {
                 : <h1>{props.main}</h1>
             }
         </div>
-    )
+    );
 }
 
 const mapStateToProps = state => ({
@@ -70,6 +74,6 @@ const mapStateToProps = state => ({
     sys: state.sys,
     timezone: state.timezone,
     hideEls: state.hideEls
-})
+});
 
 export default connect(mapStateToProps, { getData })(WeatherDisplayContainer);
