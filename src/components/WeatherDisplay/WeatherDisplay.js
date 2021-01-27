@@ -9,9 +9,6 @@ const WeatherDisplay = ({ sys, weather, convertTime, ...props }) => {
         <div style={props.hideEls}>
             <div className={s.mainInfo}>
                 <h2 className={s.name}>{props.name} {sys.country}</h2>
-<<<<<<< HEAD
-                <ShowIcon weather={weather} request={props.request} />
-=======
                 <div className={s.iconTemperature}>
                     <ShowIcon weather={weather} request={props.request} />
                 </div>
@@ -25,7 +22,6 @@ const WeatherDisplay = ({ sys, weather, convertTime, ...props }) => {
                     <div className={s.sunR}>Sunrise: {convertTime(sys.sunrise)}</div>
                     <div className={s.sunS}>Sunset: {convertTime(sys.sunset)}</div>
                 </div>
->>>>>>> UI
             </div>
 
         </div>

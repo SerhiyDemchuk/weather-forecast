@@ -8,10 +8,7 @@
 
 .App {
   min-width: 600px;
-<<<<<<< HEAD
-=======
   min-height: 700px;
->>>>>>> UI
   background: linear-gradient(
     to right bottom, 
     rgba(255, 255, 255, 0.7), 
@@ -23,8 +20,4 @@
 .App:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   transition: ease .7s all;
-<<<<<<< HEAD
-}
-=======
 } 
->>>>>>> UI

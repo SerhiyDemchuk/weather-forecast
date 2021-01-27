@@ -3,8 +3,6 @@ import { getData } from '../../redux/reducer/weatherReducer';
 import { connect } from 'react-redux';
 import WeatherDisplay from './WeatherDisplay';
 import s from './WeatherDisplay.module.css';
-import ShowMain from '../ShowMain/ShowMain';
-import ShowIcon from '../ShowIcon/ShowIcon';
 
 const WeatherDisplayContainer = (props) => {
 

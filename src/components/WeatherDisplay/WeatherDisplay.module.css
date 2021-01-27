@@ -5,27 +5,14 @@ h2, p {
 }
 
 .typeInfo {
-<<<<<<< HEAD
-  height: 400px;
-  padding: 48px 0;
-=======
   height: 100px;
   padding: 50px 0 25px 0;
->>>>>>> UI
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .typeInfo input {
-<<<<<<< HEAD
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
-=======
->>>>>>> UI
   border: 2px solid transparent;
   outline: none;
   width: 50%;
@@ -65,13 +52,6 @@ h2, p {
 .mainInfo {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  padding-left: 85px;
-}
-
-.name {
-  padding: 16px 0;
-=======
   /* padding-left: 85px; */
 }
 
@@ -94,5 +74,4 @@ h2, p {
 .info {
   display: flex;
   justify-content: space-around;
->>>>>>> UI
 }
